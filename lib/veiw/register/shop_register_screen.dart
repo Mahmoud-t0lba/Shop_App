@@ -24,15 +24,15 @@ class ShopRegisterScreen extends StatelessWidget {
       child: BlocConsumer<ShopRegisterCubit, ShopRegisterStates>(
         listener: (context, state) {
           if (state is ShopRegisterSuccessState) {
-            if (state.loginModel.status!) {
+            if (state.loginModel.status) {
               print(state.loginModel.message);
-              print(state.loginModel.data!.token);
+              print(state.loginModel.data.token);
 
               CacheHelper.saveData(
                 key: 'token',
-                value: state.loginModel.data!.token,
+                value: state.loginModel.data.token,
               ).then((value) {
-                token = state.loginModel.data!.token!;
+                token = state.loginModel.data.token;
 
                 navigateAndFinish(
                   context,
@@ -43,7 +43,7 @@ class ShopRegisterScreen extends StatelessWidget {
               print(state.loginModel.message);
 
               showToast(
-                text: state.loginModel.message!,
+                text: state.loginModel.message,
                 state: ToastStates.ERROR,
               );
             }
@@ -63,17 +63,15 @@ class ShopRegisterScreen extends StatelessWidget {
                       children: [
                         Text(
                           'REGISTER',
-                          style:
-                              Theme.of(context).textTheme.headline4!.copyWith(
-                                    color: Colors.black,
-                                  ),
+                          style: Theme.of(context).textTheme.headline4.copyWith(
+                                color: Colors.black,
+                              ),
                         ),
                         Text(
                           'Register now to browse our hot offers',
-                          style:
-                              Theme.of(context).textTheme.bodyText1!.copyWith(
-                                    color: Colors.grey,
-                                  ),
+                          style: Theme.of(context).textTheme.bodyText1.copyWith(
+                                color: Colors.grey,
+                              ),
                         ),
                         SizedBox(height: 30.0),
                         defaultFormField(
@@ -139,7 +137,7 @@ class ShopRegisterScreen extends StatelessWidget {
                               state is! ShopRegisterLoadingState,
                           widgetBuilder: (context) => defaultButton(
                             function: () {
-                              if (formKey.currentState!.validate()) {
+                              if (formKey.currentState.validate()) {
                                 ShopRegisterCubit.get(context).userRegister(
                                   name: nameController.text,
                                   email: emailController.text,

@@ -15,9 +15,9 @@ class ProductsScreen extends StatelessWidget {
     return BlocConsumer<ShopCubit, ShopStates>(
       listener: (context, state) {
         if (state is ShopSuccessChangeFavoritesState) {
-          if (!state.model.status!) {
+          if (!state.model.status) {
             showToast(
-              text: state.model.message!,
+              text: state.model.message,
               state: ToastStates.ERROR,
             );
           }
@@ -50,10 +50,10 @@ class ProductsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CarouselSlider(
-              items: model.data!.banners
+              items: model.data.banners
                   .map(
                     (e) => Image(
-                      image: NetworkImage(e.image!),
+                      image: NetworkImage(e.image),
                       fit: BoxFit.cover,
                       width: double.infinity,
                     ),
@@ -95,11 +95,11 @@ class ProductsScreen extends StatelessWidget {
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) =>
-                          buildCategoryItem(categoriesModel.data!.data[index]),
+                          buildCategoryItem(categoriesModel.data.data[index]),
                       separatorBuilder: (context, index) => SizedBox(
                         width: 10,
                       ),
-                      itemCount: categoriesModel.data!.data.length,
+                      itemCount: categoriesModel.data.data.length,
                     ),
                   ),
                   SizedBox(height: 20),
@@ -128,9 +128,9 @@ class ProductsScreen extends StatelessWidget {
                 childAspectRatio: 1 / 1.8,
                 //////////////////////////
                 children: List.generate(
-                  model.data!.products.length,
+                  model.data.products.length,
                   (index) =>
-                      buildGridProduct(model.data!.products[index], context),
+                      buildGridProduct(model.data.products[index], context),
                 ),
               ),
             ),
@@ -142,7 +142,7 @@ class ProductsScreen extends StatelessWidget {
         alignment: AlignmentDirectional.bottomCenter,
         children: [
           Image(
-            image: NetworkImage(model.image!),
+            image: NetworkImage(model.image),
             height: 100.0,
             width: 100.0,
             fit: BoxFit.cover,
@@ -153,7 +153,7 @@ class ProductsScreen extends StatelessWidget {
             ),
             width: 100.0,
             child: Text(
-              model.name!,
+              model.name,
               textAlign: TextAlign.center,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -174,7 +174,7 @@ class ProductsScreen extends StatelessWidget {
               alignment: AlignmentDirectional.bottomStart,
               children: [
                 Image(
-                  image: NetworkImage(model.image!),
+                  image: NetworkImage(model.image),
                   width: double.infinity,
                   height: 200.0,
                 ),
@@ -200,7 +200,7 @@ class ProductsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    model.name!,
+                    model.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -234,14 +234,14 @@ class ProductsScreen extends StatelessWidget {
                         onPressed: () {
                           ShopCubit.get(context)
                               // ignore: null_check_always_fails
-                              .changeFavorites(model.id, productId: null!);
+                              .changeFavorites(model.id, productId: null);
                           // ignore: dead_code
                           print(model.id);
                         },
                         icon: CircleAvatar(
                           radius: 15.0,
                           backgroundColor:
-                              ShopCubit.get(context).favorites[model.id]!
+                              ShopCubit.get(context).favorites[model.id]
                                   ? defaultColor
                                   : Colors.grey,
                           child: Icon(

@@ -14,9 +14,9 @@ class CategoriesScreen extends StatelessWidget {
       builder: (context, state) {
         return ListView.separated(
           itemBuilder: (context, index) => buildCatItem(
-              ShopCubit.get(context).categoriesModel.data!.data[index]),
+              ShopCubit.get(context).categoriesModel.data.data[index]),
           separatorBuilder: (context, index) => myDivider(),
-          itemCount: ShopCubit.get(context).categoriesModel.data!.data.length,
+          itemCount: ShopCubit.get(context).categoriesModel.data.data.length,
         );
       },
     );
@@ -27,7 +27,7 @@ class CategoriesScreen extends StatelessWidget {
         child: Row(
           children: [
             Image(
-              image: NetworkImage(model.image!),
+              image: NetworkImage(model.image),
               width: 80.0,
               height: 80.0,
               fit: BoxFit.cover,
@@ -36,7 +36,7 @@ class CategoriesScreen extends StatelessWidget {
               width: 20.0,
             ),
             Text(
-              model.name!,
+              model.name,
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,

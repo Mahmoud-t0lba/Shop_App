@@ -21,9 +21,9 @@ class SettingsScreen extends StatelessWidget {
       builder: (context, state) {
         var model = ShopCubit.get(context).userModel;
 
-        nameController.text = model.data!.name!;
-        emailController.text = model.data!.email!;
-        phoneController.text = model.data!.phone!;
+        nameController.text = model.data.name;
+        emailController.text = model.data.email;
+        phoneController.text = model.data.phone;
 
         return Conditional.single(
           context: context,
@@ -80,7 +80,7 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(height: 20.0),
                   defaultButton(
                     function: () {
-                      if (formKey.currentState!.validate()) {
+                      if (formKey.currentState.validate()) {
                         ShopCubit.get(context).updateUserData(
                           name: nameController.text,
                           phone: phoneController.text,

@@ -1,7 +1,7 @@
 class SearchModel {
-  bool? status;
-  String? message;
-  Data? data;
+  bool status;
+  String message;
+  Data data;
 
   SearchModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
@@ -11,18 +11,18 @@ class SearchModel {
 }
 
 class Data {
-  int? currentPage;
-  List<Product>? data;
-  String? firstPageUrl;
-  int? from;
-  int? lastPage;
-  String? lastPageUrl;
-  String? nextPageUrl;
-  String? path;
-  int? perPage;
-  String? prevPageUrl;
-  int? to;
-  int? total;
+  int currentPage;
+  List<Product> data;
+  String firstPageUrl;
+  int from;
+  int lastPage;
+  String lastPageUrl;
+  String nextPageUrl;
+  String path;
+  int perPage;
+  String prevPageUrl;
+  int to;
+  int total;
 
   Data.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
@@ -47,22 +47,22 @@ class Data {
 }
 
 class Product {
-  late int id;
-  late dynamic price;
-  late dynamic oldPrice;
-  late int discount;
-  late String image;
-  late String name;
-  late String description;
+  int id;
+  dynamic price;
+  dynamic oldPrice;
+  int discount;
+  String image;
+  String name;
+  String description;
 
   Product({
-    required this.id,
-    required this.price,
-    required this.oldPrice,
-    required this.discount,
-    required this.image,
-    required this.name,
-    required this.description,
+    this.id,
+    this.price,
+    this.oldPrice,
+    this.discount,
+    this.image,
+    this.name,
+    this.description,
   });
 
   Product.fromJson(Map<String, dynamic> json) {

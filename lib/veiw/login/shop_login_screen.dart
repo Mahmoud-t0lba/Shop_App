@@ -22,15 +22,15 @@ class ShopLoginScreen extends StatelessWidget {
       child: BlocConsumer<ShopLoginCubit, ShopLoginStates>(
         listener: (context, state) {
           if (state is ShopLoginSuccessState) {
-            if (state.loginModel.status!) {
+            if (state.loginModel.status) {
               print(state.loginModel.message);
-              print(state.loginModel.data!.token);
+              print(state.loginModel.data.token);
 
               CacheHelper.saveData(
                 key: 'token',
-                value: state.loginModel.data!.token,
+                value: state.loginModel.data.token,
               ).then((value) {
-                token = state.loginModel.data!.token!;
+                token = state.loginModel.data.token;
 
                 navigateAndFinish(
                   context,
@@ -41,7 +41,7 @@ class ShopLoginScreen extends StatelessWidget {
               print(state.loginModel.message);
 
               showToast(
-                text: state.loginModel.message!,
+                text: state.loginModel.message,
                 state: ToastStates.ERROR,
               );
             }
@@ -61,17 +61,15 @@ class ShopLoginScreen extends StatelessWidget {
                       children: [
                         Text(
                           'LOGIN',
-                          style:
-                              Theme.of(context).textTheme.headline4!.copyWith(
-                                    color: Colors.black,
-                                  ),
+                          style: Theme.of(context).textTheme.headline4.copyWith(
+                                color: Colors.black,
+                              ),
                         ),
                         Text(
                           'Login now to browse our hot offers',
-                          style:
-                              Theme.of(context).textTheme.bodyText1!.copyWith(
-                                    color: Colors.grey,
-                                  ),
+                          style: Theme.of(context).textTheme.bodyText1.copyWith(
+                                color: Colors.grey,
+                              ),
                         ),
                         SizedBox(height: 30.0),
                         defaultFormField(
@@ -92,7 +90,7 @@ class ShopLoginScreen extends StatelessWidget {
                           type: TextInputType.visiblePassword,
                           suffix: ShopLoginCubit.get(context).suffix,
                           onSubmit: (value) {
-                            if (formKey.currentState!.validate()) {
+                            if (formKey.currentState.validate()) {
                               ShopLoginCubit.get(context).userLogin(
                                 email: emailController.text,
                                 password: passwordController.text,
@@ -119,7 +117,7 @@ class ShopLoginScreen extends StatelessWidget {
                               state is! ShopLoginLoadingState,
                           widgetBuilder: (context) => defaultButton(
                             function: () {
-                              if (formKey.currentState!.validate()) {
+                              if (formKey.currentState.validate()) {
                                 ShopLoginCubit.get(context).userLogin(
                                   email: emailController.text,
                                   password: passwordController.text,

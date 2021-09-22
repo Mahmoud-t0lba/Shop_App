@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'controller/bloc_observer.dart';
 import 'controller/components/constants.dart';
@@ -50,8 +49,8 @@ void main() async {
 
 // ignore: must_be_immutable
 class MyApp extends StatelessWidget {
-  bool? isDark;
-  Widget? startWidget;
+  bool isDark;
+  Widget startWidget;
 
   MyApp({
     this.isDark,
@@ -65,7 +64,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) => AppCubit()
             ..changeAppMode(
-              fromShared: isDark!,
+              fromShared: isDark,
             ),
         ),
         BlocProvider(
@@ -83,9 +82,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
             darkTheme: darkTheme,
-            themeMode:
-                AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
-            home: ShopLayout(),
+            home: startWidget,
           );
         },
       ),

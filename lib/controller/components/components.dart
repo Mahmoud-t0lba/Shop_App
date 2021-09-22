@@ -8,8 +8,8 @@ Widget defaultButton({
   Color background = Colors.blue,
   bool isUpperCase = true,
   double radius = 3.0,
-  required Function function,
-  required String text,
+  Function function,
+  String text,
 }) =>
     Container(
       width: width,
@@ -34,8 +34,8 @@ Widget defaultButton({
     );
 
 Widget defaultTextButton({
-  required Function function,
-  required String text,
+  Function function,
+  String text,
 }) =>
     TextButton(
       onPressed: () {
@@ -47,37 +47,29 @@ Widget defaultTextButton({
     );
 
 Widget defaultFormField({
-  required TextEditingController controller,
-  required TextInputType type,
-  Function? onSubmit,
-  Function? onChange,
-  Function? onTap,
+  TextEditingController controller,
+  TextInputType type,
+  Function onSubmit,
+  Function onChange,
+  Function onTap,
   bool isPassword = false,
-  required Function validate,
-  required String label,
-  required IconData prefix,
-  IconData? suffix,
-  Function? suffixPressed,
+  Function validate,
+  String label,
+  IconData prefix,
+  IconData suffix,
+  Function suffixPressed,
   bool isClickable = true,
-  bool? autocorrect,
+  bool autocorrect,
 }) =>
     TextFormField(
       controller: controller,
       keyboardType: type,
       obscureText: isPassword,
       enabled: isClickable,
-      onFieldSubmitted: (s) {
-        onSubmit!(s);
-      },
-      onChanged: (s) {
-        onChange!(s);
-      },
-      onTap: () {
-        onTap!();
-      },
-      validator: (s) {
-        validate(s);
-      },
+      onFieldSubmitted: onSubmit,
+      onChanged: onChange,
+      onTap: onTap,
+      validator: validate,
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: Icon(
@@ -85,9 +77,7 @@ Widget defaultFormField({
         ),
         suffixIcon: suffix != null
             ? IconButton(
-                onPressed: () {
-                  suffixPressed!();
-                },
+                onPressed: suffixPressed,
                 icon: Icon(
                   suffix,
                 ),
@@ -130,8 +120,8 @@ void navigateAndFinish(
     );
 
 void showToast({
-  required String text,
-  required ToastStates state,
+  String text,
+  ToastStates state,
 }) =>
     Fluttertoast.showToast(
       msg: text,
@@ -242,12 +232,12 @@ Widget buildListProduct(
                         onPressed: () {
                           ShopCubit.get(context)
                               // ignore: null_check_always_fails
-                              .changeFavorites(model.id, productId: null!);
+                              .changeFavorites(model.id, productId: null);
                         },
                         icon: CircleAvatar(
                           radius: 15.0,
                           backgroundColor:
-                              ShopCubit.get(context).favorites[model.id!]!
+                              ShopCubit.get(context).favorites[model.id]
                                   ? defaultColor
                                   : Colors.grey,
                           child: Icon(

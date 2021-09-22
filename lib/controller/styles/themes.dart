@@ -8,6 +8,7 @@ ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor: HexColor('333739'),
   appBarTheme: AppBarTheme(
     titleSpacing: 20.0,
+    // ignore: deprecated_member_use
     backwardsCompatibility: false,
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: HexColor('333739'),
@@ -44,24 +45,6 @@ ThemeData darkTheme = ThemeData(
 ThemeData lightTheme = ThemeData(
   primarySwatch: defaultColor,
   scaffoldBackgroundColor: Colors.white,
-  appBarTheme: AppBarTheme(
-    titleSpacing: 20.0,
-    backwardsCompatibility: false,
-    systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarColor: Colors.white,
-      statusBarIconBrightness: Brightness.dark,
-    ),
-    backgroundColor: Colors.white,
-    elevation: 0.0,
-    titleTextStyle: TextStyle(
-      color: Colors.black,
-      fontSize: 20.0,
-      fontWeight: FontWeight.bold,
-    ),
-    iconTheme: IconThemeData(
-      color: Colors.black,
-    ),
-  ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     type: BottomNavigationBarType.fixed,
     selectedItemColor: defaultColor,

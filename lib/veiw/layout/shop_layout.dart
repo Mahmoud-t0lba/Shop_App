@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../controller/styles/icon_broken.dart';
 import '../../controller/components/components.dart';
 import '../search/search_screen.dart';
 import 'cubit/cubit.dart';
@@ -23,7 +22,7 @@ class ShopLayout extends StatelessWidget {
             actions: [
               IconButton(
                 icon: Icon(
-                  IconBroken.Search,
+                  Icons.search,
                 ),
                 onPressed: () {
                   navigateTo(
@@ -43,25 +42,25 @@ class ShopLayout extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: Icon(
-                  IconBroken.Home,
+                  Icons.home,
                 ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  IconBroken.Category,
+                  Icons.category,
                 ),
                 label: 'Categories',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  IconBroken.Heart,
+                  Icons.favorite,
                 ),
                 label: 'Favorites',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  IconBroken.Setting,
+                  Icons.settings,
                 ),
                 label: 'Settings',
               ),

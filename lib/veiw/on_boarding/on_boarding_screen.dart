@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../login/shop_login_screen.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../controller/components/components.dart';
 import '../../controller/network/local/cache_helper.dart';
@@ -12,9 +11,9 @@ class BoardingModel {
   final String body;
 
   BoardingModel({
-    required this.title,
-    required this.image,
-    required this.body,
+    this.title,
+    this.image,
+    this.body,
   });
 }
 
@@ -33,12 +32,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       body: 'On Board 1 Body',
     ),
     BoardingModel(
-      image: 'assets/images/onboard_2.jpg',
+      image: 'assets/images/onboard_1.jpg',
       title: 'On Board 2 Title',
       body: 'On Board 2 Body',
     ),
     BoardingModel(
-      image: 'assets/images/onboard_3.jpg',
+      image: 'assets/images/onboard_1.jpg',
       title: 'On Board 3 Title',
       body: 'On Board 3 Body',
     ),
@@ -63,7 +62,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*   appBar: AppBar(
         actions: [
           defaultTextButton(
             function: submit,
@@ -71,6 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           ),
         ],
       ),
+      */
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(

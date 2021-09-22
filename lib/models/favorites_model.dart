@@ -1,7 +1,7 @@
 class FavoritesModel {
-  bool? status;
-  String? message;
-  Data? data;
+  bool status;
+  String message;
+  Data data;
 
   FavoritesModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
@@ -11,18 +11,18 @@ class FavoritesModel {
 }
 
 class Data {
-  int? currentPage;
-  List<FavoritesData>? data;
-  String? firstPageUrl;
-  int? from;
-  int? lastPage;
-  String? lastPageUrl;
-  String? nextPageUrl;
-  String? path;
-  int? perPage;
-  String? prevPageUrl;
-  int? to;
-  int? total;
+  int currentPage;
+  List<FavoritesData> data;
+  String firstPageUrl;
+  int from;
+  int lastPage;
+  String lastPageUrl;
+  String nextPageUrl;
+  String path;
+  int perPage;
+  String prevPageUrl;
+  int to;
+  int total;
 
   Data.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
@@ -30,7 +30,7 @@ class Data {
       // ignore: deprecated_member_use
       data = [];
       json['data'].forEach((v) {
-        data!.add(FavoritesData.fromJson(v));
+        data.add(FavoritesData.fromJson(v));
       });
     }
     firstPageUrl = json['first_page_url'];
@@ -47,8 +47,8 @@ class Data {
 }
 
 class FavoritesData {
-  int? id;
-  Product? product;
+  int id;
+  Product product;
 
   FavoritesData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -58,13 +58,13 @@ class FavoritesData {
 }
 
 class Product {
-  int? id;
+  int id;
   dynamic price;
   dynamic oldPrice;
-  int? discount;
-  String? image;
-  String? name;
-  String? description;
+  int discount;
+  String image;
+  String name;
+  String description;
 
   Product({
     this.id,

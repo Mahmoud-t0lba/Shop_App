@@ -11,13 +11,13 @@ class ShopRegisterCubit extends Cubit<ShopRegisterStates> {
 
   static ShopRegisterCubit get(context) => BlocProvider.of(context);
 
-  late  ShopLoginModel loginModel;
+  ShopLoginModel loginModel;
 
   void userRegister({
-    required String name,
-    required String email,
-    required String password,
-    required String phone,
+    String name,
+    String email,
+    String password,
+    String phone,
   }) {
     emit(ShopRegisterLoadingState());
 

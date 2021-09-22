@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../controller/styles/icon_broken.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
 import '../../controller/components/components.dart';
@@ -39,7 +38,7 @@ class SearchScreen extends StatelessWidget {
                         SearchCubit.get(context).search(text);
                       },
                       label: 'Search',
-                      prefix: IconBroken.Search,
+                      prefix: Icons.search,
                     ),
                     SizedBox(
                       height: 10.0,
@@ -52,13 +51,13 @@ class SearchScreen extends StatelessWidget {
                       Expanded(
                         child: ListView.separated(
                           itemBuilder: (context, index) => buildListProduct(
-                            SearchCubit.get(context).model.data!.data![index],
+                            SearchCubit.get(context).model.data.data[index],
                             context,
                             isOldPrice: false,
                           ),
                           separatorBuilder: (context, index) => myDivider(),
                           itemCount:
-                              SearchCubit.get(context).model.data!.data!.length,
+                              SearchCubit.get(context).model.data.data.length,
                         ),
                       ),
                   ],
