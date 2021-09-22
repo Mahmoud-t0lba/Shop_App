@@ -34,7 +34,7 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(ShopChangeBottomNavState());
   }
 
-  late HomeModel homeModel;
+  HomeModel homeModel;
 
   Map<int, bool> favorites = {};
 
@@ -47,9 +47,9 @@ class ShopCubit extends Cubit<ShopStates> {
     ).then((value) {
       homeModel = HomeModel.fromJson(value.data);
 
-      homeModel.data!.products.forEach((element) {
+      homeModel.data.products.forEach((element) {
         favorites.addAll({
-          element.id!: element.inFavorites!,
+          element.id: element.inFavorites,
         });
       });
 
@@ -60,7 +60,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-  late CategoriesModel categoriesModel;
+  CategoriesModel categoriesModel;
 
   void getCategories() {
     DioHelper.getData(
@@ -75,10 +75,10 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-  late ChangeFavoritesModel changeFavoritesModel;
+  ChangeFavoritesModel changeFavoritesModel;
 
-  void changeFavorites(id, {required int productId}) {
-    favorites[productId] = !favorites[productId]!;
+  void changeFavorites(id, {int productId}) {
+    favorites[productId] = !favorites[productId];
 
     emit(ShopChangeFavoritesState());
 
@@ -92,21 +92,21 @@ class ShopCubit extends Cubit<ShopStates> {
       changeFavoritesModel = ChangeFavoritesModel.fromJson(value.data);
       print(value.data);
 
-      if (changeFavoritesModel.status!) {
-        favorites[productId] = !favorites[productId]!;
+      if (changeFavoritesModel.status) {
+        favorites[productId] = !favorites[productId];
       } else {
         getFavorites();
       }
 
       emit(ShopSuccessChangeFavoritesState(changeFavoritesModel));
     }).catchError((error) {
-      favorites[productId] = !favorites[productId]!;
+      favorites[productId] = !favorites[productId];
 
       emit(ShopErrorChangeFavoritesState());
     });
   }
 
-  late FavoritesModel favoritesModel;
+  FavoritesModel favoritesModel;
 
   void getFavorites() {
     emit(ShopLoadingGetFavoritesState());
@@ -124,7 +124,7 @@ class ShopCubit extends Cubit<ShopStates> {
     });
   }
 
-  late ShopLoginModel userModel;
+  ShopLoginModel userModel;
 
   void getUserData() {
     emit(ShopLoadingUserDataState());
@@ -143,9 +143,9 @@ class ShopCubit extends Cubit<ShopStates> {
   }
 
   void updateUserData({
-    required String name,
-    required String email,
-    required String phone,
+    @required String name,
+    @required String email,
+    @required String phone,
   }) {
     emit(ShopLoadingUpdateUserState());
 
