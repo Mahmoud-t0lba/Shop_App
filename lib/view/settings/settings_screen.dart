@@ -113,6 +113,7 @@ class SettingsScreen extends StatelessWidget {
                                     context,
                                     const ShopLoginScreen(),
                                   );
+                                  ShopCubit.get(context).currentIndex = 0;
                                 },
                                 text: 'Logout',
                               ),
