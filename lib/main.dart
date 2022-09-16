@@ -23,14 +23,25 @@ void main() async {
   print('onBoarding ======>$onBoarding');
   print('token ======>$loginToken');
 
-  if (onBoarding != null) {
-    if (loginToken == null) {
+  // if (onBoarding != null) {
+  //   if (loginToken == null) {
+  //     widget = const ShopLoginScreen();
+  //   } else {
+  //     widget = const ShopLayout();
+  //   }
+  // } else {
+  //   widget = const OnBoardingScreen();
+  // }
+
+  switch (onBoarding) {
+    case null:
+      widget = const OnBoardingScreen();
+      break;
+    case null:
       widget = const ShopLoginScreen();
-    } else {
+      break;
+    default:
       widget = const ShopLayout();
-    }
-  } else {
-    widget = const OnBoardingScreen();
   }
 
   BlocOverrides.runZoned(

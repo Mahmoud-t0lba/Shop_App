@@ -1,13 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_conditional_rendering/flutter_conditional_rendering.dart';
+
 import '../../components/components.dart';
 import '../../components/constants.dart';
 import '../../models/categories_model.dart';
 import '../../models/home_model.dart';
 import 'cubit/cubit.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_conditional_rendering/flutter_conditional_rendering.dart';
-
 import 'cubit/states.dart';
 
 class ShopHome extends StatelessWidget {
@@ -128,7 +128,7 @@ class ShopHome extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 1,
               crossAxisSpacing: 1,
-              childAspectRatio: 1 / 1.5,
+              childAspectRatio: 1 / 1.6,
               children: List.generate(
                 model.data!.products.length,
                 (index) {
